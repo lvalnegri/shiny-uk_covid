@@ -68,5 +68,6 @@ build.parent.boundaries('STP')
 build.parent.boundaries('NHSO')
 build.parent.boundaries('NHSR')
 
-# bnd <- readRDS(file.path(out_path, 'NHSO'))
-# leaflet() %>% addTiles() %>% addPolygons(data = bnd, label = ~paste(id, '-', name))
+bnd <- list()
+for(x in c('CCG', 'STP', 'NHSO', 'NHSR')) bnd[[x]] <- readRDS(file.path(out_path, x))
+    saveRDS(bnd, file.path(out_path, 'boundaries'))
