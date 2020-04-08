@@ -38,7 +38,7 @@ y2[, type := 0]
 # Union
 y <- rbindlist(list( y1, y2 ), use.names = TRUE)
 y <- y[, .(N = sum(N)) , .(type, datefield, gender, age, CCG)]
-y[, `:=`( datefield = as.Date(datefield), gender = factor(gender), age = factor(age), CCG = factor(CCG) )]
+y[, `:=`( datefield = as.Date(datefield, '%d/%m/%Y'), gender = factor(gender), age = factor(age), CCG = factor(CCG) )]
 
 # save
 write_fst(y, file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid', 'dataset'))
