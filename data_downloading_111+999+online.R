@@ -1,6 +1,7 @@
 #############################################################
 # CoViD-19 UK * 111 & 999 calls + online * Data Downloading #
 #############################################################
+# https://digital.nhs.uk/data-and-information/publications/statistical/mi-potential-covid-19-symptoms-reported-through-nhs-pathways-and-111-online/latest
 
 pkg <- c('popiFun', 'data.table', 'fst')
 invisible(lapply(pkg, require, char = TRUE))
