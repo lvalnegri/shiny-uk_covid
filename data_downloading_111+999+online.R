@@ -42,7 +42,7 @@ y <- y[, .(N = sum(N)) , .(type, datefield, sex, age, CCG)]
 y[, `:=`( datefield = as.Date(datefield, '%d/%m/%Y'), sex = factor(sex), age = factor(age), CCG = factor(CCG) )]
 
 # save
-write_fst(y, file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid', 'dataset'))
+write_fst(y, file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid', 'calls_online'))
 
 # exit
 rm(list = ls())
