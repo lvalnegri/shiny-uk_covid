@@ -1,0 +1,60 @@
+var_id,description
+X01,% Persons living in a communal establishment
+X02,% Persons aged 0 to 4 years
+X03,% Persons aged 5 to 14 years
+X04,% Persons aged 25 to 44 years
+X05,% Persons aged 45 to 64 years
+X06,% Persons aged 65 to 89
+X07,% Persons aged 90 years and over
+X08,% Persons aged 16 and over who are single
+X09,% Persons aged 16 and over who are married or registered in a civil partnership
+X10,% Persons aged 16 and over who are divorced or separated
+X11,% Persons who are white
+X12,% Persons who have mixed ethnicity or are from multiple ethnic groups
+X13,% Persons who are Asian/Asian British: Indian
+X14,% Persons who are Asian/Asian British: Pakistani
+X15,% Persons who are Asian/Asian British: Bangladeshi
+X16,% Persons who are AsianAsian British: Chinese and Other
+X17,% Persons who are Black/Caribbean/Black British
+X18,% Persons who are Arab or from other ethnic groups
+X19,% Persons whose country of birth is the United Kingdom or Ireland
+X20,% Persons whose country of birth is in the old EU (pre 2004 accession countries)
+X21,% Persons whose country of birth is the new EU (post 2004 accession countries)
+X22,% Main language is not English and cannot speak English well or at all
+X23,% Households with no children
+X24,% Households with non-dependent children
+X25,% Households with full-time students
+X26,% Households who live in a detached house or bungalow
+X27,% Households who live in a semi-detached house or bungalow
+X28,% Households who live in a terrace house or end of terrace house
+X29,% Households who live in a flat
+X30,% Households who own or have shared ownership of property
+X31,% Households who are private renting
+X32,% Households who are social renting
+X33,% Occupancy room rating one or less rooms than required
+X34,Standard Illness ratio
+X35,% Persons providing unpaid care
+X36,"% Persons aged 16 and over whose highest level of qualification is Level 1, Level 2 or apprenticeship"
+X37,% Persons aged 16 and over whose highest level of qualification is Level 3 qualifications
+X38,% Persons aged 16 and over whose highest level of qualification is Level 4 and above
+X39,% Persons aged 16 and over who are schoolchildren or full-time students
+X40,% Households with two or more cars
+X41,% Persons aged between 16 and 74 who use public transport to get to work
+X42,% Persons aged between 16 and 74 who use private transport transport to get to work
+X43,"% Persons aged between 16 and 74 who walk, cycle or use an alternative method of transport to get to work"
+X44,% Employed persons aged between 16 and 74 who are unemployed
+X45,% Employed persons aged between 16 and 74 who are part-time
+X46,% Employed persons aged between 16 and 74 who are full-time
+X47,"% Employed persons aged between 16 and 74 who work in the agrivculture, forestry or fishing industries "
+X48,"% Employed persons aged between 16 and 74 who work in the mining, quarrying or construction industries"
+X49,% Employed persons aged between 16 and 74 who work in the transport or storage industries
+X50,"% Employed persons aged between 16 and 74 who work in the energy, water or air conditioining supply industries "
+X51,% Employed persons aged between 16 and 74 who work in the wholesale and retail trade; repair of motor vehicles and motor cycle vehicles
+X52,% Employed persons aged between 16 and 74 who work in the transport or service industries
+X53,% Employed persons aged between 16 and 74 who work in the accommodation or food service activities industries
+X54,"% Employed persons aged between 16 and 74 who work in the informatiojn and communication or professional, scientific and technical acitivities industries"
+X55,"% Employed persons aged between 16 and 74 who work in the financial, insurance or real estate industries`"
+X56,% Employed persons aged between 16 and 74 who work in the administrative or support service activities industries
+X57,% Employed persons aged between 16 and 74 who work in the public administration or defence; compulsory or social security industries
+X58,% Employed persons aged between 16 and 74 who work in the education sector
+X59,% Employed persons aged between 16 and 74 who work in the human health and social work activities industries
