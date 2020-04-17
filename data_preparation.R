@@ -9,6 +9,7 @@ invisible(lapply(pkg, require, char = TRUE))
 # set constants
 in_path <- file.path(pub_path, 'ext_data', 'uk', 'covid')
 out_path <- file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid')
+lcns <- c('CCG', 'STP', 'NHSO', 'NHSR', 'UTLA', 'RGN')
 
 # build boundaries for all location types
 lsoa <- fread(file.path(in_path, 'lsoa.csv'))
@@ -73,8 +74,13 @@ build.parent.boundaries('RGN')
 
 # condense all boundaries in one list only and save in RDS format
 bnd <- list()
-for(x in c('CCG', 'STP', 'NHSO', 'NHSR', 'UTLA', 'RGN')) bnd[[x]] <- readRDS(file.path(in_path, x))
-    saveRDS(bnd, file.path(out_path, 'boundaries'))
+for(x in lcns) bnd[[x]] <- readRDS(file.path(in_path, x))
+saveRDS(bnd, file.path(out_path, 'boundaries'))
+
+# condense all boundaries in one single list
+y <- list()
+for(x in lcns) y[[x]] <- fread(file.path(in_path, paste0(x, '.csv')))
+saveRDS(y, file.path(out_path, 'locations'))
 
 # add coordinates to trusts based on postcode
 y <- fread(file.path(in_path, 'trusts.csv'))
