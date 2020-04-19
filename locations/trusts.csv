@@ -1,0 +1,234 @@
+code,name,type,postcode,x_lon,y_lat,LSOA,STP,STP_name,NHSO,NHSO_name,NHSR,NHSR_name
+NAX,East Coast Community Healthcare - Beccles Hospital,P,NR349NQ,1.562352,52.454149,E01030224,QMM,Norfolk and Waveney,Q79,East of England,Y61,East of England
+NN1,Royal Hospital For Neuro-Disability West Hill,P,SW153SW,-0.213735,51.452204,E01004628,QWE,South West London,Q71,London,Y56,London
+NQ1C,Clacton Hospital (ACE-CIC),P,CO151LH,1.148173,51.786083,E01022037,QJG,Suffolk and North East Essex,Q79,East of England,Y61,East of England
+NQ1F,Fryatt Hospital (ACE-CIC),P,CO124EX,1.260654,51.933436,E01022006,QJG,Suffolk and North East Essex,Q79,East of England,Y61,East of England
+NW6L,The Lister Hospital (HCA UK),P,SW1W8RH,-0.150502,51.486519,E01033597,QRV,North West London,Q71,London,Y56,London
+NW6P,The Princess Grace Hospital (HCA UK),P,W1U 5NY,-0.152928,51.522365,E01004717,QRV,North West London,Q71,London,Y56,London
+NW6W,The Wellington Hospital North Building (HCA UK),P,NW8 9LE,-0.171472,51.531549,E01004726,QRV,North West London,Q71,London,Y56,London
+R0A,Manchester University,F,M13 9WL,-2.227711,53.462436,E01005062,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+R0B,South Tyneside And Sunderland,F,SR4 7TP,-1.410327,54.902214,E01008704,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+R1A,Worcestershire Health And Care,T,WR5 1JR,-2.178135,52.192339,E01032339,QGH,Herefordshire and Worcestershire,Q77,West Midlands,Y60,Midlands
+R1C,Solent,T,SO198BR,-1.33086,50.901687,E01017167,QRL,Hampshire and the Isle of Wight,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+R1D,Shropshire Community Health,T,SY3 8XL,-2.789366,52.705844,E01028941,QOC,Shropshire and Telford and Wrekin,Q76,North Midlands,Y60,Midlands
+R1F,Isle Of Wight,T,PO305TG,-1.30133,50.710843,E01017334,QRL,Hampshire and the Isle of Wight,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+R1H,Barts Health,T,E1  2ES,-0.05605,51.517167,E01004323,QMF,East London,Q71,London,Y56,London
+R1K,London North West University Healthcare,T,HA1 3UJ,-0.322037,51.575407,E01000568,QRV,North West London,Q71,London,Y56,London
+R1L,Essex Partnership University,F,SS117XX,0.543374,51.633013,E01021594,QH8,Mid and South Essex,Q79,East of England,Y61,East of England
+RA2,Royal Surrey County Hospital,F,GU2 7XX,-0.607463,51.241016,E01030470,QXU,Surrey Heartlands,Q88,"Kent, Surrey and Sussex",Y59,South East
+RA3,Weston Area Health,T,BS234TQ,-2.971399,51.322335,E01014803,QUY,"Bristol, North Somerset and South Gloucestershire",Q86,South West North,Y58,South West
+RA4,Yeovil District Hospital,F,BA214AT,-2.634712,50.944843,E01029231,QSL,Somerset,Q85,South West South,Y58,South West
+RA7,University Hospitals Bristol,F,BS1 3NU,-2.593019,51.459478,E01033342,QUY,"Bristol, North Somerset and South Gloucestershire",Q86,South West North,Y58,South West
+RA9,Torbay And South Devon,F,TQ2 7AA,-3.553804,50.482316,E01015251,QJK,Devon,Q85,South West South,Y58,South West
+RAE,Bradford Teaching Hospitals,F,BD9 6RJ,-1.794697,53.80598,E01010810,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RAJ,Southend University Hospital,F,SS0 0RY,0.688617,51.553838,E01015858,QH8,Mid and South Essex,Q79,East of England,Y61,East of England
+RAL,Royal Free London,F,NW3 2QG,-0.165324,51.553224,E01000898,QMJ,North London,Q71,London,Y56,London
+RAN,Royal National Orthopaedic Hospital,T,HA7 4LP,-0.310435,51.632566,E01002114,QRV,North West London,Q71,London,Y56,London
+RAP,North Middlesex University Hospital,T,N18 1QX,-0.07375,51.613094,E01032574,QMJ,North London,Q71,London,Y56,London
+RAS,The Hillingdon Hospitals,F,UB8 3NN,-0.461175,51.526077,E01002412,QRV,North West London,Q71,London,Y56,London
+RAT,North East London,F,RM138GQ,0.171162,51.518578,E01002370,QMF,East London,Q71,London,Y56,London
+RAX,Kingston Hospital,F,KT2 7QB,-0.282601,51.414826,E01002954,QWE,South West London,Q71,London,Y56,London
+RBA,Taunton And Somerset,F,TA1 5DA,-3.121702,51.011569,E01029302,QSL,Somerset,Q85,South West South,Y58,South West
+RBD,Dorset County Hospital,F,DT1 2JY,-2.446936,50.71294,E01032643,QVV,Dorset,Q85,South West South,Y58,South West
+RBK,Walsall Healthcare,T,WS2 9PS,-1.998924,52.58233,E01010363,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RBL,Wirral University Teaching Hospital,F,CH495PE,-3.096815,53.36964,E01007251,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RBN,St Helens And Knowsley Teaching Hospitals,T,L35 5DR,-2.784954,53.420469,E01006499,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RBQ,Liverpool Heart And Chest Hospital,F,L14 3PE,-2.897989,53.411151,E01006567,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RBS,Alder Hey Children's,F,L12 2AP,-2.898723,53.420242,E01006569,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RBT,Mid Cheshire Hospitals,F,CW1 4QJ,-2.475863,53.117685,E01018480,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RBV,The Christie,F,M20 4BX,-2.230125,53.429767,E01005277,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RBZ,Northern Devon Healthcare,T,EX314JB,-4.050431,51.092169,E01020134,QJK,Devon,Q85,South West South,Y58,South West
+RC1,Bedford Hospital,T,MK429DJ,-0.472495,52.128265,E01017473,QHG,"Bedfordshire, Luton and Milton Keynes",Q79,East of England,Y61,East of England
+RC9,Luton And Dunstable University Hospital,F,LU4 0DZ,-0.474405,51.894152,E01015713,QHG,"Bedfordshire, Luton and Milton Keynes",Q79,East of England,Y61,East of England
+RCB,York Teaching Hospital,F,YO318HE,-1.084285,53.968952,E01013343,QOQ,"Humber, Coast and Vale",Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RCD,Harrogate And District,F,HG2 7SX,-1.517573,53.993807,E01027649,QOQ,"Humber, Coast and Vale",Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RCF,Airedale,F,BD206TD,-1.962695,53.898015,E01010645,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RCU,Sheffield Children's,F,S10 2TH,-1.490629,53.380599,E01007866,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RCX,"The Queen Elizabeth Hospital, King'S Lynn,",F,PE304ET,0.446694,52.75663,E01026714,QMM,Norfolk and Waveney,Q79,East of England,Y61,East of England
+RD1,Royal United Hospitals Bath,F,BA1 3NG,-2.391218,51.391665,E01014428,QOX,"Bath and North East Somerset, Swindon and Wiltshire",Q86,South West North,Y58,South West
+RD3,Poole Hospital,F,BH152JB,-1.973117,50.721987,E01015468,QVV,Dorset,Q85,South West South,Y58,South West
+RD8,Milton Keynes University Hospital,F,MK6 5LD,-0.73576,52.026384,E01016845,QHG,"Bedfordshire, Luton and Milton Keynes",Q79,East of England,Y61,East of England
+RDD,Basildon And Thurrock University Hospitals,F,SS165NL,0.450587,51.557679,E01021297,QH8,Mid and South Essex,Q79,East of England,Y61,East of England
+RDE,East Suffolk And North Essex,F,CO4 5JL,0.899182,51.910164,E01021682,QJG,Suffolk and North East Essex,Q79,East of England,Y61,East of England
+RDR,Sussex Community,F,BN2 3EW,-0.115477,50.83046,E01016895,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RDU,Frimley Health,F,GU167UJ,-0.742029,51.319666,E01030768,QNQ,Frimley,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RDY,Dorset Healthcare University,F,BH170RB,-1.978038,50.740073,E01015416,QVV,Dorset,Q85,South West South,Y58,South West
+RDZ,The Royal Bournemouth And Christchurch Hospitals,F,BH7 7DW,-1.82052,50.747482,E01015319,QVV,Dorset,Q85,South West South,Y58,South West
+REF,Royal Cornwall Hospitals,T,TR1 3LJ,-5.091464,50.266686,E01018855,QT6,Cornwall and the Isles of Scilly,Q85,South West South,Y58,South West
+REM,Liverpool University Hospitals,F,L7  8XP,-2.964809,53.409506,E01006747,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+REN,The Clatterbridge Cancer Centre,F,CH634JY,-3.024137,53.332884,E01007144,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+REP,Liverpool Women's,F,L8  7SS,-2.960077,53.398461,E01006512,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RET,The Walton Centre,F,L9  7LJ,-2.931,53.466395,E01006659,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RF4,"Barking, Havering And Redbridge University Hospitals",T,RM7 0AG,0.179031,51.568647,E01002248,QMF,East London,Q71,London,Y56,London
+RFF,Barnsley Hospital,F,S75 2EP,-1.499493,53.559132,E01007446,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RFR,The Rotherham,F,S60 2UD,-1.34288,53.413972,E01007678,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RFS,Chesterfield Royal Hospital,F,S44 5BL,-1.400051,53.236214,E01019585,QJ2,Derbyshire,Q76,North Midlands,Y60,Midlands
+RGD,Leeds And York Partnership,F,LS158ZB,-1.426439,53.796822,E01011411,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RGM,Royal Papworth Hospital,F,CB2 0AY,0.136046,52.173522,E01017995,QUE,Cambridgeshire and Peterborough,Q79,East of England,Y61,East of England
+RGN,North West Anglia,F,PE3 9GZ,-0.279386,52.583921,E01015691,QUE,Cambridgeshire and Peterborough,Q79,East of England,Y61,East of England
+RGP,James Paget University Hospitals,F,NR316LA,1.71798,52.561672,E01026617,QMM,Norfolk and Waveney,Q79,East of England,Y61,East of England
+RGR,West Suffolk,F,IP332QZ,0.709176,52.231662,E01030142,QJG,Suffolk and North East Essex,Q79,East of England,Y61,East of England
+RGT,Cambridge University Hospitals,F,CB2 0QQ,0.139114,52.173741,E01017995,QUE,Cambridgeshire and Peterborough,Q79,East of England,Y61,East of England
+RH5,Somerset Partnership,F,TA6 4RN,-2.994789,51.148585,E01029090,QSL,Somerset,Q85,South West South,Y58,South West
+RH8,Royal Devon And Exeter,F,EX2 5DW,-3.50668,50.716703,E01020013,QJK,Devon,Q85,South West South,Y58,South West
+RHA,Nottinghamshire Healthcare,F,NG3 6AA,-1.12643,52.979272,E01013935,QT1,Nottingham and Nottinghamshire,Q76,North Midlands,Y60,Midlands
+RHM,University Hospital Southampton,F,SO166YD,-1.435104,50.933019,E01017251,QRL,Hampshire and the Isle of Wight,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RHQ,Sheffield Teaching Hospitals,F,S5  7AU,-1.455965,53.409821,E01007942,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RHU,Portsmouth Hospitals,T,PO6 3LY,-1.069932,50.850297,E01017051,QRL,Hampshire and the Isle of Wight,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RHW,Royal Berkshire,F,RG1 5AN,-0.95933,51.451022,E01016414,QU9,"Buckinghamshire, Oxfordshire and Berkshire West",Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RJ1,Guy'S And St Thomas',F,SE1 7EH,-0.118905,51.497959,E01003013,QKK,South East London,Q71,London,Y56,London
+RJ2,Lewisham And Greenwich,T,SE136LH,-0.017051,51.454329,E01003291,QKK,South East London,Q71,London,Y56,London
+RJ6,Croydon Health Services,T,CR7 7YE,-0.108758,51.389128,E01001178,QWE,South West London,Q71,London,Y56,London
+RJ7,St George'S University Hospitals,F,SW170QT,-0.175694,51.426682,E01004617,QWE,South West London,Q71,London,Y56,London
+RJ8,Cornwall Partnership,F,PL312QN,-4.741628,50.47189,E01018929,QT6,Cornwall and the Isles of Scilly,Q85,South West South,Y58,South West
+RJC,South Warwickshire,F,CV345BW,-1.583203,52.289965,E01031323,QWU,Coventry and Warwickshire,Q77,West Midlands,Y60,Midlands
+RJD,Mid Staffordshire,F,ST163SA,-2.097785,52.811291,E01029725,QNC,Staffordshire and Stoke on Trent,Q76,North Midlands,Y60,Midlands
+RJE,University Hospitals Of North Midlands,T,ST4 6QG,-2.212066,53.003171,E01014294,QNC,Staffordshire and Stoke on Trent,Q76,North Midlands,Y60,Midlands
+RJL,Northern Lincolnshire And Goole,F,DN332BA,-0.096229,53.544858,E01013185,QOQ,"Humber, Coast and Vale",Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RJN,East Cheshire,T,SK103BL,-2.141074,53.262321,E01018616,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RJR,Countess Of Chester Hospital,F,CH2 1UL,-2.897884,53.2088,E01018374,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RJZ,King'S College Hospital,F,SE5 9RS,-0.093916,51.468077,E01003076,QKK,South East London,Q71,London,Y56,London
+RK5,Sherwood Forest Hospitals,F,NG174JL,-1.233579,53.134573,E01027985,QT1,Nottingham and Nottinghamshire,Q76,North Midlands,Y60,Midlands
+RK9,University Hospitals Plymouth,T,PL6 8DH,-4.113684,50.41672,E01015092,QJK,Devon,Q85,South West South,Y58,South West
+RKB,University Hospitals Coventry And Warwickshire,T,CV2 2DX,-1.438403,52.421211,E01009580,QWU,Coventry and Warwickshire,Q77,West Midlands,Y60,Midlands
+RKE,Whittington Health,T,N19 5NF,-0.139066,51.566482,E01002770,QMJ,North London,Q71,London,Y56,London
+RKL,West London,T,UB2 4SD,-0.356441,51.50598,E01001339,QRV,North West London,Q71,London,Y56,London
+RL1,The Robert Jones And Agnes Hunt Orthopaedic Hospital,F,SY107AG,-3.032685,52.884212,E01028910,QOC,Shropshire and Telford and Wrekin,Q76,North Midlands,Y60,Midlands
+RL4,The Royal Wolverhampton,T,WV100QP,-2.095555,52.599722,E01010476,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RLQ,Wye Valley,T,HR1 2ER,-2.705709,52.057013,E01014011,QGH,Herefordshire and Worcestershire,Q77,West Midlands,Y60,Midlands
+RLT,George Eliot Hospital,T,CV107DJ,-1.478439,52.51258,E01031049,QWU,Coventry and Warwickshire,Q77,West Midlands,Y60,Midlands
+RLY,North Staffordshire Combined Healthcare,T,ST4 8HH,-2.167808,52.96839,E01014236,QNC,Staffordshire and Stoke on Trent,Q76,North Midlands,Y60,Midlands
+RM1,Norfolk And Norwich University Hospitals,F,NR4 7UY,1.221195,52.617567,E01026883,QMM,Norfolk and Waveney,Q79,East of England,Y61,East of England
+RM3,Salford Royal,F,M6  8HD,-2.323424,53.487545,E01005719,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RMC,Bolton,F,BL4 0JR,-2.429894,53.553957,E01004880,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RMP,Tameside And Glossop Integrated Care,F,OL6 9RW,-2.071433,53.49153,E01005944,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RMY,Norfolk And Suffolk,F,NR6 5BE,1.250872,52.659531,E01026529,QMM,Norfolk and Waveney,Q79,East of England,Y61,East of England
+RN3,Great Western Hospitals,F,SN3 6BB,-1.7272,51.538528,E01015547,QOX,"Bath and North East Somerset, Swindon and Wiltshire",Q86,South West North,Y58,South West
+RN5,Hampshire Hospitals,F,RG249NA,-1.109918,51.280633,E01032840,QRL,Hampshire and the Isle of Wight,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RN7,Dartford And Gravesham,T,DA2 8DA,0.258645,51.434952,E01024133,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+RNA,The Dudley Group,F,DY1 2HQ,-2.118518,52.502944,E01009884,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RNK,Tavistock And Portman,F,NW3 5BA,-0.175443,51.546898,E01000882,QMJ,North London,Q71,London,Y56,London
+RNN,North Cumbria Integrated Care,F,CA117BF,-2.753558,54.667364,E01019330,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RNQ,Kettering General Hospital,F,NN168UZ,-0.741293,52.402783,E01027117,QPM,Northamptonshire,Q78,Central Midlands,Y60,Midlands
+RNS,Northampton General Hospital,T,NN1 5BD,-0.883829,52.236068,E01027224,QPM,Northamptonshire,Q78,Central Midlands,Y60,Midlands
+RNU,Oxford Health,F,OX3 7JX,-1.22232,51.750841,E01028526,QU9,"Buckinghamshire, Oxfordshire and Berkshire West",Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RNZ,Salisbury,F,SP2 8BJ,-1.789823,51.043946,E01032000,QOX,"Bath and North East Somerset, Swindon and Wiltshire",Q86,South West North,Y58,South West
+RP1,Northamptonshire Healthcare,F,NN157PW,-0.7222,52.3941,E01027100,QPM,Northamptonshire,Q78,Central Midlands,Y60,Midlands
+RP4,Great Ormond Street Hospital For Children,F,WC1N3JH,-0.119924,51.52221,E01000915,QMJ,North London,Q71,London,Y56,London
+RP5,Doncaster And Bassetlaw Teaching Hospitals,F,DN2 5LT,-1.109062,53.530806,E01007567,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RP6,Moorfields Eye Hospital,F,EC1V2PD,-0.089889,51.527246,E01002701,QMJ,North London,Q71,London,Y56,London
+RP7,Lincolnshire Partnership,F,LN1 1FS,-0.556905,53.244029,E01026147,QJM,Lincolnshire,Q78,Central Midlands,Y60,Midlands
+RPA,Medway,F,ME7 5NY,0.542062,51.379862,E01016045,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+RPC,Queen Victoria Hospital,F,RH193DZ,-0.0029,51.135073,E01031731,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RPG,Oxleas,F,DA2 7WG,0.174741,51.434795,E01024152,QKK,South East London,Q71,London,Y56,London
+RPY,The Royal Marsden,F,SW3 6JJ,-0.172565,51.490561,E01002914,QRV,North West London,Q71,London,Y56,London
+RQ3,Birmingham Women'S And Children'S,F,B4  6NH,-1.893754,52.484895,E01033617,QHL,Birmingham and Solihull,Q77,West Midlands,Y60,Midlands
+RQ8,Mid Essex Hospital Services,T,CM1 7ET,0.465993,51.774654,E01021542,QH8,Mid and South Essex,Q79,East of England,Y61,East of England
+RQM,Chelsea And Westminster Hospital,F,SW109NH,-0.181644,51.484308,E01002912,QRV,North West London,Q71,London,Y56,London
+RQW,The Princess Alexandra Hospital,T,CM201QX,0.085457,51.771529,E01021843,QM7,Hertfordshire and West Essex,Q79,East of England,Y61,East of England
+RQX,Homerton University Hospital,F,E9  6SR,-0.046099,51.550634,E01001729,QMF,East London,Q71,London,Y56,London
+RQY,South West London And St George'S Mental Health,T,SW177DJ,-0.172348,51.437358,E01004626,QWE,South West London,Q71,London,Y56,London
+RR7,Gateshead Health,F,NE9 6SX,-1.580781,54.93938,E01008219,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RR8,Leeds Teaching Hospitals,T,LS9 7TF,-1.520359,53.806869,E01033035,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RRE,Midlands Partnership,F,ST163SR,-2.109085,52.810605,E01029725,QNC,Staffordshire and Stoke on Trent,Q76,North Midlands,Y60,Midlands
+RRF,"Wrightington, Wigan And Leigh",F,WN1 2NN,-2.629091,53.55774,E01006370,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RRJ,The Royal Orthopaedic Hospital,F,B31 2AP,-1.960827,52.421134,E01008954,QHL,Birmingham and Solihull,Q77,West Midlands,Y60,Midlands
+RRK,University Hospitals Birmingham,F,B15 2GW,-1.93847,52.453198,E01033562,QHL,Birmingham and Solihull,Q77,West Midlands,Y60,Midlands
+RRP,"Barnet, Enfield And Haringey Mental Health",T,N15 3TH,-0.092097,51.580625,E01002042,QMJ,North London,Q71,London,Y56,London
+RRU,London Ambulance Service,T,SE1 8SD,-0.109031,51.500174,E01032582,QKK,South East London,Q71,London,Y56,London
+RRV,University College London Hospitals,F,NW1 2PG,-0.137409,51.525735,E01000946,QMJ,North London,Q71,London,Y56,London
+RT1,Cambridgeshire And Peterborough,F,CB215EF,0.188329,52.184505,E01018243,QUE,Cambridgeshire and Peterborough,Q79,East of England,Y61,East of England
+RT2,Pennine Care,F,OL6 7SR,-2.099981,53.485827,E01005948,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RT3,Royal Brompton & Harefield,F,SW3 6NP,-0.170855,51.489743,E01002914,QRV,North West London,Q71,London,Y56,London
+RT5,Leicestershire Partnership,T,LE4 8PQ,-1.103018,52.676504,E01025763,QK1,"Leicester, Leicestershire and Rutland",Q78,Central Midlands,Y60,Midlands
+RTD,The Newcastle Upon Tyne Hospitals,F,NE7 7DN,-1.593392,55.002783,E01008321,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RTE,Gloucestershire Hospitals,F,GL537AN,-2.071883,51.89212,E01022116,QR1,Gloucestershire,Q86,South West North,Y58,South West
+RTF,Northumbria Healthcare,F,NE298NH,-1.46734,55.025241,E01008556,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RTG,University Hospitals Of Derby And Burton,F,DE223NE,-1.513523,52.910425,E01013542,QJ2,Derbyshire,Q76,North Midlands,Y60,Midlands
+RTH,Oxford University Hospitals,F,OX3 9DU,-1.219806,51.763871,E01028534,QU9,"Buckinghamshire, Oxfordshire and Berkshire West",Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RTK,Ashford And St Peter'S Hospitals,F,KT160PZ,-0.52706,51.377832,E01030677,QXU,Surrey Heartlands,Q88,"Kent, Surrey and Sussex",Y59,South East
+RTP,Surrey And Sussex Healthcare,T,RH1 5RH,-0.162009,51.219194,E01030572,QXU,Surrey Heartlands,Q88,"Kent, Surrey and Sussex",Y59,South East
+RTQ,Gloucestershire Health And Care,F,GL3 4AW,-2.176389,51.847073,E01022446,QR1,Gloucestershire,Q86,South West North,Y58,South West
+RTR,South Tees Hospitals,F,TS4 3BW,-1.214805,54.551755,E01012018,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RTV,North West Boroughs Healthcare,F,WA2 8WA,-2.606862,53.429516,E01012468,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RTX,University Hospitals Of Morecambe Bay,F,LA9 7RG,-2.732552,54.306703,E01019367,QE1,Healthier Lancashire and South Cumbria,Q84,Lancashire and South Cumbria,Y62,North West
+RV3,Central And North West London,F,NW1 3AX,-0.142166,51.524345,E01000946,QMJ,North London,Q71,London,Y56,London
+RV5,South London And Maudsley,F,BR3 3BX,-0.029228,51.377782,E01000769,QKK,South East London,Q71,London,Y56,London
+RV9,Humber Teaching,F,HU106ED,-0.444478,53.771971,E01012961,QOQ,"Humber, Coast and Vale",Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RVJ,North Bristol,T,BS105NB,-2.591016,51.494806,E01014632,QUY,"Bristol, North Somerset and South Gloucestershire",Q86,South West North,Y58,South West
+RVN,Avon And Wiltshire Mental Health Partnership,T,BA1 3QE,-2.392313,51.388604,E01014428,QOX,"Bath and North East Somerset, Swindon and Wiltshire",Q86,South West North,Y58,South West
+RVR,Epsom And St Helier University Hospitals,T,SM5 1AA,-0.183642,51.380313,E01004128,QWE,South West London,Q71,London,Y56,London
+RVV,East Kent Hospitals University,F,CT1 3NG,1.087083,51.266589,E01024046,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+RVW,North Tees And Hartlepool,F,TS249AH,-1.227837,54.702398,E01011952,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RVY,Southport And Ormskirk Hospital,T,PR8 6PN,-2.97882,53.63357,E01006999,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RW1,Southern Health,F,SO402RZ,-1.530052,50.9313,E01022980,QRL,Hampshire and the Isle of Wight,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RW4,Mersey Care,F,L34 1PJ,-2.826417,53.424035,E01006465,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RW5,Lancashire & South Cumbria,F,PR5 6AW,-2.63894,53.719431,E01025400,QE1,Healthier Lancashire and South Cumbria,Q84,Lancashire and South Cumbria,Y62,North West
+RW6,Pennine Acute Hospitals,T,M8  5RB,-2.229502,53.517882,E01005164,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RWA,Hull University Teaching Hospitals,T,HU3 2JZ,-0.358146,53.744113,E01012852,QOQ,"Humber, Coast and Vale",Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RWD,United Lincolnshire Hospitals,T,LN2 5QY,-0.519635,53.233575,E01026125,QJM,Lincolnshire,Q78,Central Midlands,Y60,Midlands
+RWE,University Hospitals Of Leicester,T,LE1 5WW,-1.135953,52.6268,E01032875,QK1,"Leicester, Leicestershire and Rutland",Q78,Central Midlands,Y60,Midlands
+RWF,Maidstone And Tunbridge Wells,T,ME169QQ,0.483974,51.273662,E01033088,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+RWG,West Hertfordshire Hospitals,T,WD180HB,-0.404187,51.648921,E01023902,QM7,Hertfordshire and West Essex,Q79,East of England,Y61,East of England
+RWH,East And North Hertfordshire,T,SG1 4AB,-0.212726,51.924611,E01023800,QM7,Hertfordshire and West Essex,Q79,East of England,Y61,East of England
+RWJ,Stockport,F,SK2 7JE,-2.13202,53.383778,E01005801,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RWK,East London,F,E1  8DE,-0.072085,51.513297,E01032767,QMF,East London,Q71,London,Y56,London
+RWP,Worcestershire Acute Hospitals,T,WR5 1DD,-2.181158,52.191193,E01032309,QGH,Herefordshire and Worcestershire,Q77,West Midlands,Y60,Midlands
+RWR,Hertfordshire Partnership University,F,AL108YE,-0.216688,51.766985,E01023926,QM7,Hertfordshire and West Essex,Q79,East of England,Y61,East of England
+RWV,Devon Partnership,T,EX2 5AF,-3.506298,50.715395,E01020013,QJK,Devon,Q85,South West South,Y58,South West
+RWW,Warrington And Halton Teaching Hospitals,F,WA5 1QG,-2.610717,53.393973,E01012457,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RWX,Berkshire Healthcare,F,RG121BQ,-0.754693,51.416854,E01016249,QNQ,Frimley,Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RWY,Calderdale And Huddersfield,F,HD3 3EA,-1.816338,53.655474,E01011208,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RX1,Nottingham University Hospitals,T,NG7 2UH,-1.185957,52.943799,E01033410,QT1,Nottingham and Nottinghamshire,Q76,North Midlands,Y60,Midlands
+RX2,Sussex Partnership,F,BN133EP,-0.411162,50.84121,E01031829,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RX3,"Tees, Esk And Wear Valleys",F,DL2 2TS,-1.591147,54.543494,E01033481,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RX4,"Cumbria, Northumberland, Tyne And Wear",F,NE3 3XT,-1.6331,55.006488,E01008356,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RX6,North East Ambulance Service,F,NE158NY,-1.712365,54.969713,E01008387,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RX7,North West Ambulance Service,T,BL1 5DD,-2.475803,53.579021,E01004837,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RX8,Yorkshire Ambulance Service,T,WF2 0XQ,-1.517971,53.709391,E01011885,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RX9,East Midlands Ambulance Service,T,NG8 6PY,-1.238124,52.98146,E01013864,QT1,Nottingham and Nottinghamshire,Q76,North Midlands,Y60,Midlands
+RXA,Cheshire And Wirral Partnership,F,CH2 1BQ,-2.898825,53.211544,E01018377,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RXC,East Sussex Healthcare,T,TN377PT,0.561978,50.88769,E01020987,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RXE,Rotherham Doncaster And South Humber,F,DN4 8QN,-1.146558,53.497488,E01007502,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RXF,Mid Yorkshire Hospitals,T,WF1 4DG,-1.488555,53.692418,E01011884,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RXG,South West Yorkshire Partnership,F,WF1 3SP,-1.494054,53.69734,E01011877,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RXH,Brighton And Sussex University Hospitals,T,BN2 5BE,-0.118177,50.819468,E01016862,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RXK,Sandwell And West Birmingham Hospitals,T,B18 7QH,-1.932507,52.488627,E01009345,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RXL,Blackpool Teaching Hospitals,F,FY3 8NR,-3.015863,53.820616,E01012722,QE1,Healthier Lancashire and South Cumbria,Q84,Lancashire and South Cumbria,Y62,North West
+RXM,Derbyshire Healthcare,F,DE223LZ,-1.512351,52.91807,E01013542,QJ2,Derbyshire,Q76,North Midlands,Y60,Midlands
+RXN,Lancashire Teaching Hospitals,F,PR2 9HT,-2.706842,53.791521,E01025300,QE1,Healthier Lancashire and South Cumbria,Q84,Lancashire and South Cumbria,Y62,North West
+RXP,County Durham And Darlington,F,DL3 6HX,-1.563733,54.530374,E01012355,QHM,Cumbria and North East,Q74,Cumbria and North East,Y63,North East and Yorkshire
+RXQ,Buckinghamshire Healthcare,T,HP7 0JD,-0.621408,51.663005,E01017745,QU9,"Buckinghamshire, Oxfordshire and Berkshire West",Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RXR,East Lancashire Hospitals,T,BB2 3HH,-2.462716,53.73556,E01012632,QE1,Healthier Lancashire and South Cumbria,Q84,Lancashire and South Cumbria,Y62,North West
+RXT,Birmingham And Solihull Mental Health,F,B1  3RB,-1.917317,52.484114,E01033619,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RXV,Greater Manchester Mental Health,F,M25 3BL,-2.291465,53.536749,E01005034,QOP,Greater Manchester,Q83,Greater Manchester,Y62,North West
+RXW,Shrewsbury And Telford Hospital,T,SY3 8XQ,-2.793689,52.709274,E01028942,QOC,Shropshire and Telford and Wrekin,Q76,North Midlands,Y60,Midlands
+RXX,Surrey And Borders Partnership,F,KT227AD,-0.335629,51.297591,E01030549,QXU,Surrey Heartlands,Q88,"Kent, Surrey and Sussex",Y59,South East
+RXY,Kent And Medway,O,ME169PH,0.485699,51.273212,E01033088,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+RXY,Kent And Medway Nhs And Social Care Partnership Trust,T,ME169PH,0.485699,51.273212,E01033088,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+RY2,Bridgewater Community Healthcare,F,WA5 7TY,-2.628343,53.415482,E01012562,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RY3,Norfolk Community Health And Care,T,NR2 3TU,1.262486,52.6341,E01026863,QMM,Norfolk and Waveney,Q79,East of England,Y61,East of England
+RY4,Hertfordshire Community,T,AL7 1BW,-0.194122,51.802232,E01023954,QM7,Hertfordshire and West Essex,Q79,East of England,Y61,East of England
+RY5,Lincolnshire Community Health Services,T,LN5 7JH,-0.52415,53.226467,E01026176,QJM,Lincolnshire,Q78,Central Midlands,Y60,Midlands
+RY6,Leeds Community Healthcare,T,LS6 1PF,-1.568473,53.814971,E01011443,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RY7,Wirral Community Health And Care,F,CH420LQ,-3.026531,53.380029,E01007292,QYG,Cheshire and Merseyside,Q75,Cheshire and Merseyside,Y62,North West
+RY8,Derbyshire Community Health Services,F,S42 7JE,-1.479477,53.23967,E01019771,QJ2,Derbyshire,Q76,North Midlands,Y60,Midlands
+RY9,Hounslow And Richmond Community Healthcare,T,TW118HU,-0.326599,51.427449,E01003891,QWE,South West London,Q71,London,Y56,London
+RYA,West Midlands Ambulance Service University,F,DY5 1LX,-2.119039,52.485661,E01009746,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RYC,East Of England Ambulance Service,T,SG8 6NA,0.014173,52.07658,E01018267,QUE,Cambridgeshire and Peterborough,Q79,East of England,Y61,East of England
+RYD,South East Coast Ambulance Service,F,RH109BG,-0.168202,51.133135,E01031583,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RYE,South Central Ambulance Service,F,OX266HR,-1.14948,51.891776,E01028463,QU9,"Buckinghamshire, Oxfordshire and Berkshire West",Q87,"Hampshire, Isle of Wight and Thames Valley",Y59,South East
+RYF,South Western Ambulance Service,F,EX2 7HY,-3.464744,50.720169,E01033234,QJK,Devon,Q85,South West South,Y58,South West
+RYG,Coventry And Warwickshire Partnership,T,CV6 6NY,-1.486518,52.457137,E01009589,QWU,Coventry and Warwickshire,Q77,West Midlands,Y60,Midlands
+RYJ,Imperial College Healthcare,T,W2  1BL,-0.174411,51.51754,E01033594,QRV,North West London,Q71,London,Y56,London
+RYK,Dudley And Walsall Mental Health Partnership,T,DY2 8PS,-2.084448,52.508328,E01009889,QUA,The Black Country and West Birmingham,Q77,West Midlands,Y60,Midlands
+RYR,Western Sussex Hospitals,F,BN112DH,-0.363429,50.816691,E01031789,QNX,Sussex and East Surrey,Q88,"Kent, Surrey and Sussex",Y59,South East
+RYV,Cambridgeshire Community Services,T,PE274LG,-0.067127,52.322863,E01018168,QUE,Cambridgeshire and Peterborough,Q79,East of England,Y61,East of England
+RYW,Birmingham Community Healthcare,F,B7  4BN,-1.885825,52.487324,E01033561,QHL,Birmingham and Solihull,Q77,West Midlands,Y60,Midlands
+RYX,Central London Community Healthcare,T,NW1 5JD,-0.151539,51.522838,E01004717,QRV,North West London,Q71,London,Y56,London
+RYY,Kent Community Health,F,ME169NT,0.478723,51.278405,E01024717,QKS,Kent and Medway,Q88,"Kent, Surrey and Sussex",Y59,South East
+TAH,Sheffield Health And Social Care,P,S10 3TH,-1.537421,53.364484,E01007958,QF7,South Yorkshire and Bassetlaw,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+NW6B,London Bridge Hospital (HCA UK),P,SE1 2PR,-0.085893,51.506327,E01004027,QKK,South East London,Q71,London,Y56,London
+NMM,St John & St Elizabeth Hospital,P,NW8 9NH,-0.175461,51.533473,E01004649,QRV,North West London,Q71,London,Y56,London
+TAD,Bradford District Care,F,BD183LD,-1.788605,53.839675,E01033694,QWO,West Yorkshire and Harrogate,Q72,Yorkshire and Humber,Y63,North East and Yorkshire
+RBB,Paulton Memorial Hospital (VirginCare),P,BS397SB,-2.493295,51.298674,E01014439,QOX,"Bath and North East Somerset, Swindon and Wiltshire",Q86,South West North,Y58,South West
