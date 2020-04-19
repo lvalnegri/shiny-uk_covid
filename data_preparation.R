@@ -82,7 +82,7 @@ y <- list()
 for(x in c('trusts', lcns)) y[[x]] <- fread(file.path(in_path, paste0(x, '.csv')))
 saveRDS(y, file.path(out_path, 'locations'))
 
-# add coordinates to trusts based on postcode
+# add coordinates and LSOA to trusts based on postcode
 y <- fread(file.path(in_path, 'trusts.csv'))
 yn <- names(y)
 pc <- read_fst(file.path(geouk_path, 'postcodes'), columns = c('postcode', 'x_lon', 'y_lat'), as.data.table = TRUE)
