@@ -44,7 +44,7 @@ y[, trust := factor(trust)]
 write_fst(y, file.path(out_path, 'trust_data'))
 
 # Cases by UTLA England
-yu <- fread(file.path(in_path, 'coronavirus-cases.csv'))
+yu <- fread('https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv')
 yu[, c('Area name', 'Area type', 'Cumulative lab-confirmed cases') := NULL]
 names(yu) <- c('UTLA', 'date_reported', 'cases')
 lcns <- readRDS(file.path(out_path, 'locations'))
