@@ -41,6 +41,7 @@ for(sn in sns){
     y <- rbindlist(list( y, y1 ), fill = TRUE)
 }
 y[, trust := factor(trust)]
+y[N > 0, delay := as.numeric(date_reported - date_happened) ]
 write_fst(y, file.path(out_path, 'trust_data'))
 
 # Cases by UTLA England
