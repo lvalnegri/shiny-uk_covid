@@ -43,8 +43,9 @@ dr <- '2020-04-23'
 # yr <- y[date_reported >= dr]
 gp <- ggplot(y, aes(date_happened, cN, fill = fdate_reported)) + 
         geom_col(show.legend = FALSE) +
-        geom_text(aes(y = cN, label = cLabel), vjust = -0.6, color = 'darkred', size = 3) +
         scale_x_date(breaks = '5 days', labels = scales::date_format('%d %b')) +
+        scale_fill_manual(values = yp) +
+        geom_text(aes(y = cN, label = cLabel), vjust = -0.6, color = 'darkred', size = 3) +
         labs(
             title = 'CoViD-19 Deaths in NHS England Hospitals', 
             subtitle = 'Report Day: {format(as.Date(closest_state), "%d %B")}',
@@ -52,10 +53,16 @@ gp <- ggplot(y, aes(date_happened, cN, fill = fdate_reported)) +
             x = 'Date of Death', 
             y = 'Cumulated Deaths'
         ) +
-        scale_fill_manual(values = yp) +
-#        geom_label(data = ya, x = min(yr$date_happened), y = max(yr$cN), aes(label = paste('Total Deaths:', format(tN, big.mark = ',')))) +
+        geom_text(
+            data = ya, 
+            x = min(y$date_happened) + 2, 
+            y = max(y$cN), 
+            aes(label = paste('Total Deaths:', format(tN, big.mark = ','))), 
+            size = 8,
+            show.legend = FALSE
+        ) +
         theme_clean() +
-        transition_states(date_reported) +
+        transition_states(fdate_reported) +
         ease_aes('linear')
 
 # build the animation
