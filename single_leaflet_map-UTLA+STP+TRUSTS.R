@@ -7,7 +7,8 @@ pkg <- c('popiFun', 'data.table', 'fst', 'ggplot2', 'gridExtra', 'htmltools', 'h
 invisible(lapply(pkg, require, char = TRUE))
 
 # set constants
-app_path <- file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid')
+data_path <- file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid')
+app_path <- '/srv/shiny-server/uk_covid/'
 r_min <- 10
 r_max <- 75
 
@@ -86,17 +87,18 @@ add_label_poly <- function(y, type){
 }
 
 # read boundaries
-bnd <- readRDS(file.path(app_path, 'boundaries'))
+bnd <- readRDS(file.path(data_path, 'boundaries'))
 
 # read trust deaths data
-yt <- readRDS(file.path(app_path, 'locations'))
+yt <- readRDS(file.path(data_path, 'locations'))
 yt <- yt[['trusts']]
-dts.t <- read_fst(file.path(app_path, 'trust_data'), as.data.table = TRUE)
+dts.t <- read_fst(file.path(data_path, 'trust_data'), as.data.table = TRUE)
 yt <- dts.t[is.na(date_reported), .(deaths = sum(N)), .(code = trust)][yt, on = 'code'][is.na(deaths), deaths := 0]
 yt[deaths > 0, radius := sqrt(deaths) - 1][, radius := (radius/max(radius, na.rm = TRUE)) * (r_max - r_min) + r_min]
+qt <- as.integer(fivenum(yt$deaths))
 
 # read UTLA cases data
-dts.u <- readRDS(file.path(app_path, 'cases'))
+dts.u <- readRDS(file.path(data_path, 'cases'))
 dts.u <- dts.u[['UTLA']]
 yu1 <- dts.u[, .(cases = sum(cases)), UTLA]
 yu2 <- dts.t[is.na(date_reported)][yt[, .(code, UTLA)], on = c(trust = 'code')][, .(deaths = sum(N, na.rm = TRUE)), UTLA]
@@ -159,7 +161,7 @@ for(idx in 1:nrow(yt)){
                     theme_minimal()
         
         # save plot as image
-        ggsave(paste0('./plots/trust_', trs, '.png'), grid.arrange(gp1, gp2, nrow = 2), 'png', width = 31.75, height = 20.11, units = 'cm')
+        ggsave(file.path(app_path, 'plots', paste0('trust_', trs, '.png')), grid.arrange(gp1, gp2, nrow = 2), 'png', width = 31.75, height = 20.11, units = 'cm')
         
     }
 
@@ -287,8 +289,8 @@ mp <- mp %>%
     )
 
 # check choices (TRUSTS): 2) death less than or equal to Q1 (#FCC5C0)
-yt1 <- yt[deaths > 0 & deaths <= fivenum(yt$deaths)[2]]
-grp.y1 <- paste0('Hospitals Deaths Less Than or Equal to Q1 = ', fivenum(yt$deaths)[2], ' (', nrow(yt1), ')')
+yt1 <- yt[deaths > 0 & deaths <= qt[2]]
+grp.y1 <- paste0('Hospitals Deaths Less Than or Equal to Q1 = ', qt[2], ' (', nrow(yt1), ')')
 mp <- mp %>% 
     addCircleMarkers(
         data = yt1,
@@ -305,8 +307,8 @@ mp <- mp %>%
 )
 
 # check choices (TRUSTS): 3) death between Q1 + 1 and Q2 = Med (#F768A1)
-yt2 <- yt[deaths > fivenum(yt$deaths)[2] & deaths <= fivenum(yt$deaths)[3]]
-grp.y2 <- paste0('Hospitals Deaths Between (Q1 + 1) = ', (fivenum(yt$deaths)[2] + 1), ' and Md = ', fivenum(yt$deaths)[3], ' (', nrow(yt2), ')')
+yt2 <- yt[deaths > qt[2] & deaths <= qt[3]]
+grp.y2 <- paste0('Hospitals Deaths Between (Q1 + 1) = ', (qt[2] + 1), ' and Md = ', qt[3], ' (', nrow(yt2), ')')
 mp <- mp %>% 
     addCircleMarkers(
         data = yt2,
@@ -323,8 +325,8 @@ mp <- mp %>%
     )
 
 # check choices (TRUSTS): 4) death between Med + 1 and Q3 (#DD3497)
-yt3 <- yt[deaths > fivenum(yt$deaths)[3] & deaths <= fivenum(yt$deaths)[4]]
-grp.y3 <- paste0('Hospitals Deaths Between (Md + 1) = ', (fivenum(yt$deaths)[3] + 1), ' and Q3 = ', fivenum(yt$deaths)[4], ' (', nrow(yt3), ')')
+yt3 <- yt[deaths > qt[3] & deaths <= qt[4]]
+grp.y3 <- paste0('Hospitals Deaths Between (Md + 1) = ', (qt[3] + 1), ' and Q3 = ', qt[4], ' (', nrow(yt3), ')')
 mp <- mp %>% 
     addCircleMarkers(
         data = yt3,
@@ -341,8 +343,8 @@ mp <- mp %>%
     )
 
 # check choices (TRUSTS): 5) death greater than Q3 + 1 (#7A0177)
-yt4 <- yt[deaths > fivenum(yt$deaths)[4]]
-grp.y4 <- paste0('Hospitals Deaths More Than (Q3 + 1) = ', (fivenum(yt$deaths)[4] + 1), ' (', nrow(yt4), ')')
+yt4 <- yt[deaths > qt[4]]
+grp.y4 <- paste0('Hospitals Deaths More Than (Q3 + 1) = ', (qt[4] + 1), ' (', nrow(yt4), ')')
 mp <- mp %>% 
     addCircleMarkers(
         data = yt4,
@@ -370,8 +372,28 @@ mp <- mp %>%
     ) 
 
 # Add title
-mp # <- mp %>% 
+mp <- mp %>% 
+        addControl(
+            tags$div(HTML(paste0(
+                '<p style="font-size:20px;padding:10px 5px 10px 10px;margin:0px;background-color:#FFD5C6;">',
+                    'NHS England CoViD-19 Cases and Deaths, by UTLA, STP and Hospital.', '<br><br>',
+                    'Last Report Date: ', format(max(dts.t$date_reported, na.rm=TRUE), '%d %B'),
+                '</p>'
+            ))),
+            position = 'bottomleft'
+        )
 
+# Fix the default
+mp <- mp %>% 
+        hideGroup(c(grp.y0, grp.y1, grp.y2, grp.y3, grp.y4)) %>% 
+        showGroup('UTLA Cases vs 1mln Population') %>% showGroup(grp.y4)
 
+# save map as html in shiny server app folder
+saveWidget(mp, file.path(app_path, 'index.html'))
 
-# saveWidget(mp, paste0('CoViD19_UK-', Sys.Date(), '.html'))
+# Substitute plot paths in map html file
+y <- readLines(file.path(app_path, 'index.html'))
+y <- gsub('../graphs', './plots', y)
+fc <- file(file.path(app_path, 'index.html'))
+writeLines(y, fc)
+close(fc)
