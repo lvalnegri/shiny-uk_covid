@@ -45,8 +45,10 @@ y[N > 0, delay := as.numeric(date_reported - date_happened) ]
 write_fst(y, file.path(out_path, 'trust_data'))
 
 # Cases by UTLA England
-yu <- fread('https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv')
-yu[, c('Area name', 'Area type', 'Cumulative lab-confirmed cases') := NULL]
+yu <- fread(
+        'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv',
+        select = c('Area code', 'Specimen date', 'Daily lab-confirmed cases')
+)
 names(yu) <- c('UTLA', 'date_reported', 'cases')
 lcns <- readRDS(file.path(out_path, 'locations'))
 yu <- yu[lcns[['UTLA']][, .(UTLA, RGN)], on = 'UTLA']
