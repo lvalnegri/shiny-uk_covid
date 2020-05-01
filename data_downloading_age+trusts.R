@@ -40,8 +40,13 @@ for(sn in sns){
     if(sn != 'T') y1[, date_reported := as.Date(sn)]
     y <- rbindlist(list( y, y1 ), fill = TRUE)
 }
-y[, trust := factor(trust)]
 y[N > 0, delay := as.numeric(date_reported - date_happened) ]
+# added 30-Apr because of recoding partner hospitals by NHS ==================
+yt <- readRDS(file.path(out_path, 'locations'))
+yt <- yt[['trusts']][code != oldcode, .(code, oldcode)]
+for(idx in 1:nrow(yt)) y[trust == yt[idx, oldcode], trust := yt[idx, code] ]
+# ============================================================================
+y[, trust := factor(trust)]
 write_fst(y, file.path(out_path, 'trust_data'))
 
 # Cases by UTLA England
