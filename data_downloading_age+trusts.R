@@ -49,19 +49,24 @@ for(idx in 1:nrow(yt)) y[trust == yt[idx, oldcode], trust := yt[idx, code] ]
 y[, trust := factor(trust)]
 write_fst(y, file.path(out_path, 'trust_data'))
 
-# Cases by UTLA England
+# Cases by UTLA/LTLA England
+lcns <- readRDS(file.path(out_path, 'locations'))
 yu <- fread(
         'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv',
-        select = c('Area code', 'Specimen date', 'Daily lab-confirmed cases')
+        select = c('Area code', 'Area type', 'Specimen date', 'Daily lab-confirmed cases')
 )
+yl <- yu[`Area type` == 'Lower tier local authority'][, `Area type` := NULL] 
+names(yl) <- c('LTLA', 'date_reported', 'cases')
+yl[LTLA == 'E09000001' & date_reported == '2020-03-20', cases := 5]
+yl[LTLA == 'E09000012' & date_reported == '2020-03-20', cases := 9]
+yu <- yu[`Area type` == 'Upper tier local authority'][, `Area type` := NULL] 
 names(yu) <- c('UTLA', 'date_reported', 'cases')
-lcns <- readRDS(file.path(out_path, 'locations'))
 yu <- yu[lcns[['UTLA']][, .(UTLA, RGN)], on = 'UTLA']
 yu[UTLA == 'E09000001' & date_reported == '2020-03-20', cases := 5]
 yu[UTLA == 'E09000012' & date_reported == '2020-03-20', cases := 9]
 yr <- yu[, .(cases = sum(cases)), .(date_reported, RGN)]
 yu[, RGN := NULL]
-y <- list('UTLA' = yu, 'RGN' = yr)
+y <- list('LTLA' = yl, 'UTLA' = yu, 'RGN' = yr)
 saveRDS(y, file.path(out_path, 'cases'))
 
 # exit

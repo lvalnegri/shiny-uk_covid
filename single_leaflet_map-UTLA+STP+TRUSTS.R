@@ -11,6 +11,7 @@ data_path <- file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid')
 app_path <- '/srv/shiny-server/uk_covid/'
 r_min <- 10
 r_max <- 75
+build_images <- FALSE
 
 # options for map hover labels
 lbl.options <- labelOptions(
@@ -24,10 +25,10 @@ lbl.options <- labelOptions(
 
 # options for map hover highlight
 hlt.options <- highlightOptions(
-          weight = 6,
-          color = 'white',
-          opacity = 1,
-          bringToFront = TRUE
+    weight = 6,
+    color = 'white',
+    opacity = 1,
+    bringToFront = TRUE
 )
 
 # define functions
@@ -46,6 +47,17 @@ add_label_poly <- function(y, type){
         function(x)
             HTML(
                 switch(type,
+                    'l' = paste0(
+                            '<hr>',
+                                '<b>LTLA</b>: ', y$LTLA_name[x], '<br>',
+                                '<b>Region</b>: ', y$RGN_name[x], '<br>',
+                            '<hr>',
+                                '<b>Total Cases</b>: ', format(y$cases[x], big.mark = ','), '<br>',
+                                '<b>Cases over 1mln population</b>: ', format(y$pcases[x], big.mark = ','), 
+                                    ' (', get_num_sfx(round(sum(y$pcases <= y$pcases[x]) / length(y$pcases) * 100)), ' Q)<br>',
+                                # '<b>Weekly % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
+                            '<hr>'
+                    ),
                     'u' = paste0(
                             '<hr>',
                                 '<b>UTLA</b>: ', y$UTLA_name[x], '<br>',
@@ -97,9 +109,26 @@ yt <- dts.t[is.na(date_reported), .(deaths = sum(N)), .(code = trust)][yt, on = 
 yt[deaths > 0, radius := sqrt(deaths) - 1][, radius := (radius/max(radius, na.rm = TRUE)) * (r_max - r_min) + r_min]
 qt <- as.integer(fivenum(yt$deaths))
 
+# read LTLA cases data
+dts <- readRDS(file.path(data_path, 'cases'))
+dts.l <- dts[['LTLA']]
+yl1 <- dts.l[, .(cases = sum(cases)), LTLA]
+yl2 <- dts.t[is.na(date_reported)][yt[, .(code, LTLA)], on = c(trust = 'code')][, .(deaths = sum(N, na.rm = TRUE)), LTLA]
+yl <- yl2[yl1, on = 'LTLA'][is.na(deaths), deaths := 0]
+yl[, fatality_rate := round(100 * deaths / cases, 2)]
+
+# augment LTLA boundaries
+bnd.ltla <- bnd[['LTLA']]
+bnd.ltla <- merge(bnd.ltla, yl, by.x = 'id', by.y = 'LTLA')
+bnd.ltla$pcases <- round(bnd.ltla$cases * 1000000 / bnd.ltla$popT)
+bnd.ltla$pdeaths <- round(bnd.ltla$deaths * 1000000 / bnd.ltla$popT)
+
+# calculate palettes over cases for LTLA polygons 
+pal.lcases <- colorQuantile('BuPu', bnd.ltla$cases, 9)
+pal.plcases <- colorQuantile('BuPu', bnd.ltla$pcases, 9)
+
 # read UTLA cases data
-dts.u <- readRDS(file.path(data_path, 'cases'))
-dts.u <- dts.u[['UTLA']]
+dts.u <- dts[['UTLA']]
 yu1 <- dts.u[, .(cases = sum(cases)), UTLA]
 yu2 <- dts.t[is.na(date_reported)][yt[, .(code, UTLA)], on = c(trust = 'code')][, .(deaths = sum(N, na.rm = TRUE)), UTLA]
 yu <- yu2[yu1, on = 'UTLA'][is.na(deaths), deaths := 0]
@@ -112,8 +141,8 @@ bnd.utla$pcases <- round(bnd.utla$cases * 1000000 / bnd.utla$popT)
 bnd.utla$pdeaths <- round(bnd.utla$deaths * 1000000 / bnd.utla$popT)
 
 # calculate palettes over cases for UTLA polygons 
-pal.cases <- colorQuantile('BuPu', bnd.utla$cases, 9)
-pal.pcases <- colorQuantile('BuPu', bnd.utla$pcases, 9)
+pal.ucases <- colorQuantile('BuPu', bnd.utla$cases, 9)
+pal.pucases <- colorQuantile('BuPu', bnd.utla$pcases, 9)
 
 # augment STP boundaries
 bnd.stp <- bnd[['STP']]
@@ -127,51 +156,98 @@ pal.pdeaths <- colorQuantile('YlOrRd', bnd.stp$pdeaths, 9)
 
 ### create plots (save in subfolder "plots")
 
-## A) UTLA
-
-
-## B) STP
-
-
-## C) TRUSTS
-
-for(idx in 1:nrow(yt)){
+if(build_images){
+    ## A) UTLA
     
-    trs <- yt[idx, code]
-    message('Processing trust ', trs, ' (', idx, ' out of ', nrow(yt), ')')
     
-    if(yt[idx, deaths] > 0){
+    ## B) STP
+    
+    
+    ## C) TRUSTS
+    
+    for(idx in 1:nrow(yt)){
         
-        # cumulative deaths as line on left axis + daily deaths as bars on right axis
-        dt <- dts.t[is.na(date_reported) & trust == trs, .(date_happened, N)][order(date_happened)][, CN := cumsum(N)][CN > 0]
-        dt[, lbl := N][N <= 1, lbl := NA]
-        gp1 <- ggplot(dt, aes(date_happened)) +
-                    geom_col(aes(y = N), fill = 'red') +
-                    geom_text(aes(y = lbl, label = N), vjust = 1.4, color = 'black', size = 3) +
-                    geom_line(aes(y = CN, group = 1), color = 'blue') +
-                    geom_text(aes(y = CN, label = CN), hjust = 0.8, vjust = -1, color = 'blue', size = 2.5) +
-                    labs(title = 'Cumulative and Daily Deaths by Date of Death', x = '', y = '') +
-                    theme_minimal()
+        trs <- yt[idx, code]
+        message('Processing trust ', trs, ' (', idx, ' out of ', nrow(yt), ')')
         
-        # histogram for reporting delay
-        dt <- dts.t[!is.na(date_reported) & !is.na(delay) & trust == trs][, .N, delay]
-        gp2 <- ggplot(dt, aes(delay, N)) +
-                    geom_col(colour = 'black', fill = 'white') +
-                    labs(title = 'Delay in Days between Death and Report', x = '', y = '') +
-                    theme_minimal()
-        
-        # save plot as image
-        ggsave(file.path(app_path, 'plots', paste0('trust_', trs, '.png')), grid.arrange(gp1, gp2, nrow = 2), 'png', width = 31.75, height = 20.11, units = 'cm')
-        
+        if(yt[idx, deaths] > 0){
+            
+            # cumulative deaths as line on left axis + daily deaths as bars on right axis
+            dt <- dts.t[is.na(date_reported) & trust == trs, .(date_happened, N)][order(date_happened)][, CN := cumsum(N)][CN > 0]
+            dt[, lbl := N][N <= 1, lbl := NA]
+            gp1 <- ggplot(dt, aes(date_happened)) +
+                        geom_col(aes(y = N), fill = 'red') +
+                        geom_text(aes(y = lbl, label = N), vjust = 1.4, color = 'black', size = 3) +
+                        geom_line(aes(y = CN, group = 1), color = 'blue') +
+                        geom_text(aes(y = CN, label = CN), hjust = 0.8, vjust = -1, color = 'blue', size = 2.5) +
+                        labs(title = 'Cumulative and Daily Deaths by Date of Death', x = '', y = '') +
+                        theme_minimal()
+            
+            # histogram for reporting delay
+            dt <- dts.t[!is.na(date_reported) & !is.na(delay) & trust == trs][, .N, delay]
+            gp2 <- ggplot(dt, aes(delay, N)) +
+                        geom_col(colour = 'black', fill = 'white') +
+                        labs(title = 'Delay in Days between Death and Report', x = '', y = '') +
+                        theme_minimal()
+            
+            # save plot as image
+            ggsave(file.path(app_path, 'plots', paste0('trust_', trs, '.png')), grid.arrange(gp1, gp2, nrow = 2), 'png', width = 31.75, height = 20.11, units = 'cm')
+            
+        }
+    
     }
 
 }
-    
+
 # base layer
 mp <- leaflet(options = leafletOptions(minZoom = 6)) %>% 
         # addProviderTiles(providers$Esri.WorldTopoMap) %>% 
         addProviderTiles(providers$CartoDB.Positron) %>% 
         addResetMapButton() 
+
+# round choices (LTLA): 1) clear map
+mp <- mp %>% 
+    addPolygons(
+        data = bnd.ltla,
+        group = 'LTLA Clear',
+        fillOpacity = 0,
+        color = 'blue',
+        weight = 0.8,
+        smoothFactor = 0.2,
+#        highlightOptions = hlt.options,
+        label = add_label_poly(bnd.ltla, 'l'),
+        labelOptions = lbl.options
+    )
+
+# round choices (LTLA): 2) cases map
+mp <- mp %>% 
+    addPolygons(
+        data = bnd.ltla,
+        group = 'LTLA Cases',
+        fillColor = ~pal.lcases(cases),
+        fillOpacity = 0.7,
+        color = 'gray',
+        weight = 0.4,
+        smoothFactor = 0.2,
+        highlightOptions = hlt.options,
+        label = add_label_poly(bnd.ltla, 'l'),
+        labelOptions = lbl.options
+    ) 
+
+# round choices (LTLA): 3) 1 mln pop cases map
+mp <- mp %>% 
+    addPolygons(
+        data = bnd.ltla,
+        group = 'LTLA Cases vs 1mln Population',
+        fillColor = ~pal.plcases(pcases),
+        fillOpacity = 0.7,
+        color = 'gray',
+        weight = 0.4,
+        smoothFactor = 0.2,
+        highlightOptions = hlt.options,
+        label = add_label_poly(bnd.ltla, 'l'),
+        labelOptions = lbl.options
+    )
 
 # round choices (UTLA): 1) clear map
 mp <- mp %>% 
@@ -192,7 +268,7 @@ mp <- mp %>%
     addPolygons(
         data = bnd.utla,
         group = 'UTLA Cases',
-        fillColor = ~pal.cases(cases),
+        fillColor = ~pal.ucases(cases),
         fillOpacity = 0.7,
         color = 'gray',
         weight = 0.4,
@@ -205,7 +281,7 @@ mp <- mp %>%
     # addLegend( 
     #     data = bnd.utla,
     #     group = 'UTLA Cases',
-    #     pal = pal.cases, 
+    #     pal = pal.ucases, 
     #     values = ~cases, 
     #     opacity = 0.9, 
     #     title = 'CoViD19 Cases by UTLA', 
@@ -217,7 +293,7 @@ mp <- mp %>%
     addPolygons(
         data = bnd.utla,
         group = 'UTLA Cases vs 1mln Population',
-        fillColor = ~pal.pcases(pcases),
+        fillColor = ~pal.pucases(pcases),
         fillOpacity = 0.7,
         color = 'gray',
         weight = 0.4,
@@ -364,6 +440,7 @@ mp <- mp %>%
 mp <- mp %>% 
     addLayersControl(
     	baseGroups = c(
+    	    'LTLA Clear', 'LTLA Cases', 'LTLA Cases vs 1mln Population',
     	    'UTLA Clear', 'UTLA Cases', 'UTLA Cases vs 1mln Population',
     	    'STP Clear', 'STP Deaths', 'STP Deaths vs 1mln Population'
     	),
@@ -376,7 +453,7 @@ mp <- mp %>%
         addControl(
             tags$div(HTML(paste0(
                 '<p style="font-size:20px;padding:10px 5px 10px 10px;margin:0px;background-color:#FFD5C6;">',
-                    'NHS England CoViD-19 Cases and Deaths, by UTLA, STP and Hospital.', '<br><br>',
+                    'NHS England CoViD-19 Cases and Deaths, by LTLA, UTLA, STP and Hospital.', '<br><br>',
                     'Last Report Date: ', format(max(dts.t$date_reported, na.rm=TRUE), '%d %B'),
                 '</p>'
             ))),
@@ -386,7 +463,7 @@ mp <- mp %>%
 # Fix the default
 mp <- mp %>% 
         hideGroup(c(grp.y0, grp.y1, grp.y2, grp.y3, grp.y4)) %>% 
-        showGroup('UTLA Cases vs 1mln Population') %>% showGroup(grp.y4)
+        showGroup('LTLA Cases vs 1mln Population') %>% showGroup(grp.y4)
 
 # save map as html in shiny server app folder
 saveWidget(mp, file.path(app_path, 'index.html'))
@@ -397,3 +474,7 @@ y <- gsub('../graphs', './plots', y)
 fc <- file(file.path(app_path, 'index.html'))
 writeLines(y, fc)
 close(fc)
+
+# clean
+rm(list = ls())
+gc()
