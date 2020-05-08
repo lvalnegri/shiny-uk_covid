@@ -9,7 +9,7 @@ invisible(lapply(pkg, require, char = TRUE))
 # set constants
 in_path <- file.path(pub_path, 'ext_data', 'uk', 'covid')
 out_path <- file.path(pub_path, 'datasets', 'shiny_apps', 'uk_covid')
-lcns <- c('CCG', 'STP', 'NHSO', 'NHSR', 'UTLA', 'RGN')
+lcns <- c('CCG', 'STP', 'NHSO', 'NHSR', 'LTLA', 'UTLA', 'RGN')
 
 # build boundaries for all location types
 lsoa <- fread(file.path(in_path, 'LSOA.csv'))
@@ -69,6 +69,7 @@ build.parent.boundaries('CCG')
 build.parent.boundaries('STP')
 build.parent.boundaries('NHSO')
 build.parent.boundaries('NHSR')
+build.parent.boundaries('LTLA')
 build.parent.boundaries('UTLA')
 build.parent.boundaries('RGN')
 
