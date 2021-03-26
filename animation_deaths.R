@@ -55,7 +55,7 @@ gp <- ggplot(y, aes(date_happened, cN, fill = fdate_reported)) +
         ) +
         geom_text(
             data = ya, 
-            x = min(y$date_happened) + 5, 
+            x = min(y$date_happened) + 6, 
             y = max(y$cN), 
             aes(label = paste('Total Deaths:', format(tN, big.mark = ','))), 
             size = 8,

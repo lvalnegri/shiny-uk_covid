@@ -3,7 +3,10 @@
 ####################################
 
 # load libraries
-pkg <- c('popiFun', 'data.table', 'fst', 'ggplot2', 'gridExtra', 'htmltools', 'htmlwidgets', 'leaflet', 'leaflet.extras', 'leafpop')
+pkg <- c('popiFun', 
+    'data.table', 'fst', 'ggplot2', 'gridExtra', 'htmltools', 'htmlwidgets', 
+    'leaflet', 'leaflet.extras', 'leafpop', 'sp'
+)
 invisible(lapply(pkg, require, char = TRUE))
 
 # set constants
@@ -13,34 +16,7 @@ r_min <- 10
 r_max <- 75
 build_images <- FALSE
 
-# options for map hover labels
-lbl.options <- labelOptions(
-    textsize = '12px', 
-    direction = 'right', 
-    sticky = FALSE, 
-    opacity = 0.8,
-    offset = c(60, -40), 
-    style = list('font-weight' = 'normal', 'padding' = '2px 6px')
-)
-
-# options for map hover highlight
-hlt.options <- highlightOptions(
-    weight = 6,
-    color = 'white',
-    opacity = 1,
-    bringToFront = TRUE
-)
-
 # define functions
-get_num_sfx <- function(x){
-    x <- as.character(x)
-    switch(substring(x, nchar(x)),
-        '1' = paste0(x, 'st'),
-        '2' = paste0(x, 'nd'),
-        '3' = paste0(x, 'rd'),
-        paste0(x, 'th')
-    )
-}
 add_label_poly <- function(y, type){
     lapply(
         1:nrow(y),
@@ -55,7 +31,7 @@ add_label_poly <- function(y, type){
                                 '<b>Total Cases</b>: ', format(y$cases[x], big.mark = ','), '<br>',
                                 '<b>Cases over 1mln population</b>: ', format(y$pcases[x], big.mark = ','), 
                                     ' (', get_num_sfx(round(sum(y$pcases <= y$pcases[x]) / length(y$pcases) * 100)), ' Q)<br>',
-                                # '<b>Weekly % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
+                                '<b>14-day % change</b>: ', format(y$wow[x], big.mark = ','), '% (', y$w0[x], ' vs ', y$w1[x] ,')<br>',
                             '<hr>'
                     ),
                     'u' = paste0(
@@ -66,7 +42,7 @@ add_label_poly <- function(y, type){
                                 '<b>Total Cases</b>: ', format(y$cases[x], big.mark = ','), '<br>',
                                 '<b>Cases over 1mln population</b>: ', format(y$pcases[x], big.mark = ','), 
                                     ' (', get_num_sfx(round(sum(y$pcases <= y$pcases[x]) / length(y$pcases) * 100)), ' Q)<br>',
-                                # '<b>Weekly % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
+                                '<b>14-day % change</b>: ', format(y$wow[x], big.mark = ','), '% (', y$w0[x], ' vs ', y$w1[x] ,')<br>',
                             '<hr>'
                     ),
                     's' = paste0(
@@ -77,7 +53,7 @@ add_label_poly <- function(y, type){
                                 '<b>Total Deaths</b>: ', format(y$deaths[x], big.mark = ','), '<br>',
                                 '<b>Deaths over 1mln population</b>: ', format(y$pdeaths[x], big.mark = ','), 
                                     ' (', get_num_sfx(round(sum(y$pdeaths <= y$pdeaths[x]) / length(y$pdeaths) * 100)), ' Q)<br>',
-                                # '<b>Weekly % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
+                                # '<b>14-day % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
                             '<hr>'
                     ),
                     't' = paste0(
@@ -90,7 +66,7 @@ add_label_poly <- function(y, type){
                                 '<b>NHS Region</b>: ', y$NHSR_name[x], '<br>',
                             '<hr>',
                                 '<b>Total Deaths</b>: ', format(y$deaths[x], big.mark = ','), '<br>',
-                                # '<b>Weekly % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
+                                # '<b>14-day % change</b>: ', format(y$wchange[x], big.mark = ','), '%<br>',
                             '<hr>'
                     )
                 )
@@ -116,6 +92,14 @@ yl1 <- dts.l[, .(cases = sum(cases)), LTLA]
 yl2 <- dts.t[is.na(date_reported)][yt[, .(code, LTLA)], on = c(trust = 'code')][, .(deaths = sum(N, na.rm = TRUE)), LTLA]
 yl <- yl2[yl1, on = 'LTLA'][is.na(deaths), deaths := 0]
 yl[, fatality_rate := round(100 * deaths / cases, 2)]
+dts.l[, date_reported := as.Date(date_reported)]
+dts.l[, dback := max(date_reported) - date_reported][, wback := floor(dback / 7) + 1]
+yw <- dts.l[, .(w0 = sum(cases)), .(LTLA, wback)][order(LTLA, wback)][, w1 := shift(w0, -2)][, wow := round(100 * (w0 - w1) / w1, 1)][wback == 1, .(LTLA, w0, w1, wow)]
+yl <- yw[yl, on = 'LTLA']
+
+# y0 <- dts.l[date_reported %in% seq(max(dts.l$date_reported) - 13, max(dts.l$date_reported) - 7, 1)][, .(N0 = sum(cases)), LTLA]
+# y1 <- dts.l[date_reported %in% seq(max(dts.l$date_reported) - 6, max(dts.l$date_reported), 1)][, .(N1 = sum(cases)), LTLA]
+# yw <- y0[y1, on = 'LTLA'][, wow := round(100 * (N1 / N0 - 1), 2)]
 
 # augment LTLA boundaries
 bnd.ltla <- bnd[['LTLA']]
@@ -126,6 +110,7 @@ bnd.ltla$pdeaths <- round(bnd.ltla$deaths * 1000000 / bnd.ltla$popT)
 # calculate palettes over cases for LTLA polygons 
 pal.lcases <- colorQuantile('BuPu', bnd.ltla$cases, 9)
 pal.plcases <- colorQuantile('BuPu', bnd.ltla$pcases, 9)
+pal.lwow <- colorNumeric('PiYG', bnd.ltla$wow, 9, reverse = TRUE)
 
 # read UTLA cases data
 dts.u <- dts[['UTLA']]
@@ -133,6 +118,11 @@ yu1 <- dts.u[, .(cases = sum(cases)), UTLA]
 yu2 <- dts.t[is.na(date_reported)][yt[, .(code, UTLA)], on = c(trust = 'code')][, .(deaths = sum(N, na.rm = TRUE)), UTLA]
 yu <- yu2[yu1, on = 'UTLA'][is.na(deaths), deaths := 0]
 yu[, fatality_rate := round(100 * deaths / cases, 2)]
+
+dts.u[, date_reported := as.Date(date_reported)]
+dts.u[, dback := max(date_reported) - date_reported][, wback := floor(dback / 7) + 1]
+yw <- dts.u[, .(w0 = sum(cases)), .(UTLA, wback)][order(UTLA, wback)][, w1 := shift(w0, -2)][, wow := round(100 * (w0 - w1) / w1, 1)][wback == 1, .(UTLA, w0, w1, wow)]
+yu <- yw[yu, on = 'UTLA']
 
 # augment UTLA boundaries
 bnd.utla <- bnd[['UTLA']]
@@ -143,6 +133,7 @@ bnd.utla$pdeaths <- round(bnd.utla$deaths * 1000000 / bnd.utla$popT)
 # calculate palettes over cases for UTLA polygons 
 pal.ucases <- colorQuantile('BuPu', bnd.utla$cases, 9)
 pal.pucases <- colorQuantile('BuPu', bnd.utla$pcases, 9)
+pal.uwow <- colorNumeric('PiYG', bnd.utla$wow, 9, reverse = TRUE)
 
 # augment STP boundaries
 bnd.stp <- bnd[['STP']]
@@ -249,6 +240,21 @@ mp <- mp %>%
         labelOptions = lbl.options
     )
 
+# round choices (LTLA): 4) variation Week-On-Week
+mp <- mp %>% 
+    addPolygons(
+        data = bnd.ltla,
+        group = 'LTLA Cases 14-day Change',
+        fillColor = ~pal.lwow(wow),
+        fillOpacity = 0.7,
+        color = 'gray',
+        weight = 0.4,
+        smoothFactor = 0.2,
+        highlightOptions = hlt.options,
+        label = add_label_poly(bnd.ltla, 'l'),
+        labelOptions = lbl.options
+    )
+
 # round choices (UTLA): 1) clear map
 mp <- mp %>% 
     addPolygons(
@@ -294,6 +300,21 @@ mp <- mp %>%
         data = bnd.utla,
         group = 'UTLA Cases vs 1mln Population',
         fillColor = ~pal.pucases(pcases),
+        fillOpacity = 0.7,
+        color = 'gray',
+        weight = 0.4,
+        smoothFactor = 0.2,
+        highlightOptions = hlt.options,
+        label = add_label_poly(bnd.utla, 'u'),
+        labelOptions = lbl.options
+    )
+
+# round choices (UTLA): 4) variation Week-On-Week
+mp <- mp %>% 
+    addPolygons(
+        data = bnd.utla,
+        group = 'UTLA Cases 14-day Change',
+        fillColor = ~pal.uwow(wow),
         fillOpacity = 0.7,
         color = 'gray',
         weight = 0.4,
@@ -440,8 +461,8 @@ mp <- mp %>%
 mp <- mp %>% 
     addLayersControl(
     	baseGroups = c(
-    	    'LTLA Clear', 'LTLA Cases', 'LTLA Cases vs 1mln Population',
-    	    'UTLA Clear', 'UTLA Cases', 'UTLA Cases vs 1mln Population',
+    	    'LTLA Clear', 'LTLA Cases', 'LTLA Cases vs 1mln Population', 'LTLA Cases 14-day Change',
+    	    'UTLA Clear', 'UTLA Cases', 'UTLA Cases vs 1mln Population', 'UTLA Cases 14-day Change',
     	    'STP Clear', 'STP Deaths', 'STP Deaths vs 1mln Population'
     	),
         overlayGroups = c(grp.y0, grp.y1, grp.y2, grp.y3, grp.y4),
@@ -453,8 +474,8 @@ mp <- mp %>%
         addControl(
             tags$div(HTML(paste0(
                 '<p style="font-size:20px;padding:10px 5px 10px 10px;margin:0px;background-color:#FFD5C6;">',
-                    'NHS England CoViD-19 Cases and Deaths, by LTLA, UTLA, STP and Hospital.', '<br><br>',
-                    'Last Report Date: ', format(max(dts.t$date_reported, na.rm=TRUE), '%d %B'),
+                    'NHS England CoViD-19:', '<br> - Cases by LTLA, UTLA, and STP<br> - Deaths by Hospital', '<br><br>',
+                    'Last Report Date: ', format(max(dts.l$date_reported, na.rm=TRUE), '%d %B'),
                 '</p>'
             ))),
             position = 'bottomleft'

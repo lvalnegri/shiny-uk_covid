@@ -5,7 +5,7 @@
 # load packages
 pkg <- c('popiFun',
     'Cairo', 'classInt', 'data.table', 'DT', 'fontawesome', 'fst', 
-    'ggplot2', 'ggthemes', 'leaflet', 'leaflet.extras', 'leafpop', 'RColorBrewer',
+    'ggplot2', 'ggthemes', 'htmltools', 'htmlwidgets', 'leaflet', 'leaflet.extras', 'leafpop', 'RColorBrewer',
     'shiny', 'shinycssloaders', 'shinyjs', 'shinythemes', 'shinyWidgets'
 )
 invisible(lapply(pkg, require, char = TRUE))
@@ -65,20 +65,20 @@ hlt.options <- highlightOptions(
 )
 
 # build map hover labels
-add_label_prv <- function(y, x, add_v1){
-    z <- paste0(
-            '<hr>',
-                '<b>Provincia</b>: ', y$descrizione[x], '<br>',
-            '<hr>',
-                '<b>Totale Casi</b>: ', format(y$[x]N, big.mark = ','), '<br>',
-                '<b>Variazione giornaliera</b>: ', format(y$[x]V0, big.mark = ','), '%<br>',
-                '<b>Attack Rate</b>: ', format(y$[x]R, big.mark = ','), '%<br>'
-    )
-    if(!is.null(add_v1))
-        if(add_v1 > 1) z <- paste0(z, '<br><b>Variazione a ', V1, ' giorni</b>: ', format(y$V1[x], big.mark = ','), '%<br>')
-    z <- paste0(z, '<hr>')
-    HTML(z)
-}
+# add_label_prv <- function(y, x, add_v1){
+#     z <- paste0(
+#             '<hr>',
+#                 '<b>Provincia</b>: ', y$descrizione[x], '<br>',
+#             '<hr>',
+#                 '<b>Totale Casi</b>: ', format(y$[x]N, big.mark = ','), '<br>',
+#                 '<b>Variazione giornaliera</b>: ', format(y$[x]V0, big.mark = ','), '%<br>',
+#                 '<b>Attack Rate</b>: ', format(y$[x]R, big.mark = ','), '%<br>'
+#     )
+#     if(!is.null(add_v1))
+#         if(add_v1 > 1) z <- paste0(z, '<br><b>Variazione a ', V1, ' giorni</b>: ', format(y$V1[x], big.mark = ','), '%<br>')
+#     z <- paste0(z, '<hr>')
+#     HTML(z)
+# }
 
 # helper for "get_map_legend"
 get_fxb_labels <- function(y, dec.fig = 1){
@@ -130,7 +130,7 @@ areaStrokeOpacity = 0.7
 areaStrokeColor = 'slateblue'
 areaStrokeDash = '3'
 n_breaks <- 7
-fxd_brks <- c(0, 0.10, 0.25, 0.5, 1.00, 2.5, 5.0, 10.00, 25.00, 50.00, 75.00, 100.00)
+fxd_brks <- c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0)
 cls_mth <- 'equal' # choose from: fixed, equal, quantile, pretty, hclust, kmeans
 n_brks <- ifelse(cls_mth == 'fixed', length(fxd_brks) - 1, n_breaks )
 use_palette <- FALSE
